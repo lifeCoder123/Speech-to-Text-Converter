@@ -23,28 +23,28 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
-    return gapi.client.speech.speech.recognize({
-      "resource": {
-        "audio": {
-          "content": "IyFBTVIKPFJ2xaHCkFLCgcKBy4bDgmXFocOEV1VHw4Dvv71aw4jCokYeVO+/ve+/vcOwceKAueKA"
-        },
-        "config": {
-          "encoding": "FLAC",
-          "languageCode": "en-US",
-          "sampleRateHertz": 16000
-        }
-      }
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function(err) { console.error("Execute error", err); });
-  }
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
-  });
+//   function execute() {
+//     return gapi.client.speech.speech.recognize({
+//       "resource": {
+//         "audio": {
+//           "content": "IyFBTVIKPFJ2xaHCkFLCgcKBy4bDgmXFocOEV1VHw4Dvv71aw4jCokYeVO+/ve+/vcOwceKAueKA"
+//         },
+//         "config": {
+//           "encoding": "FLAC",
+//           "languageCode": "en-US",
+//           "sampleRateHertz": 16000
+//         }
+//       }
+//     })
+//         .then(function(response) {
+//                 // Handle the results here (response.result has the parsed body).
+//                 console.log("Response", response);
+//               },
+//               function(err) { console.error("Execute error", err); });
+//   }
+//   gapi.load("client:auth2", function() {
+//     gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
+//   });
 </script>
 
 
