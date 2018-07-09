@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head></head
-<body>
-	<script src="https://apis.google.com/js/api.js"></script>
+<head>
+<script src="https://apis.google.com/js/api.js"></script>
+
+
 <script>
   /**
-   * Sample JavaScript code for speech.speech.longrunningrecognize
+   * Sample JavaScript code for speech.speech.recognize
    * See instructions for running APIs Explorer code samples locally:
    * https://developers.google.com/explorer-help/guides/code_samples#javascript
    */
@@ -23,13 +24,16 @@
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
-    return gapi.client.speech.speech.longrunningrecognize({
+    return gapi.client.speech.speech.recognize({
+	
       "resource": {
         "audio": {
-          "content": "skjdhfkjf"
+          "content": "IyFBTVIKPFJ2xaHCkFLCgcKBy4bDgmXFocOEV1VHw4Dvv71aw4jCokYeVO+/ve+/vcOwceKAueKA"
         },
         "config": {
-          "encoding": "FLAC"
+          "encoding": "FLAC",
+          "languageCode": "en-US",
+          "sampleRateHertz": 16000
         }
       }
     })
@@ -40,14 +44,35 @@
               function(err) { console.error("Execute error", err); });
   }
   gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com
-'});
+    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
   });
 </script>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
 <button onclick="execute()">execute</button>
+<audio id="player" controls></audio>
+<script>
+  var player = document.getElementById('player');
 
-	
+  var handleSuccess = function(stream) {
+    if (window.URL) {
+      player.src = window.URL.createObjectURL(stream);
+	console.log("audio",player.src);
+    } else {
+      player.src = stream;
+    }
+  };
+
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+      .then(handleSuccess);
+</script>
+
+
 </body>
 </html>
-
