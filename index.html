@@ -29,10 +29,12 @@
   // Make sure the client is loaded and sign-in is complete before calling this method.
   // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
+    var base64FormatData=base64AudioFormat;
+    console.log("base 64 data for json",base64FormatData);
     return gapi.client.speech.speech.longrunningrecognize({
       "resource": {
         "audio": {
-          "content": base64AudioFormat 
+          "content": base64FormatData 
         }
         
       }
