@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
 <script src="https://apis.google.com/js/api.js"></script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.js"></script>
+<script src="js/recorder.js"></script>
 <script>
+  //convert into base64 code
+
+
   /**
    * Sample JavaScript code for speech.speech.recognize
    * See instructions for running APIs Explorer code samples locally:
@@ -23,18 +27,14 @@
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded and sign-in is complete before calling this method.
+  // Make sure the client is loaded and sign-in is complete before calling this method.
   function execute() {
-    return gapi.client.speech.speech.recognize({
-	
+    return gapi.client.speech.speech.longrunningrecognize({
       "resource": {
         "audio": {
-          "content": "IyFBTVIKPFJ2xaHCkFLCgcKBy4bDgmXFocOEV1VHw4Dvv71aw4jCokYeVO+/ve+/vcOwceKAueKA"
-        },
-        "config": {
-          "encoding": "FLAC",
-          "languageCode": "en-US",
-          "sampleRateHertz": 16000
+          "content": base64AudioFormat 
         }
+        
       }
     })
         .then(function(response) {
@@ -54,24 +54,18 @@
 
 </head>
 <body>
+  <p>Record audio from following buttons</p>
+  <!-- Draw the action buttons -->
+  <button id="start-btn">Start recording</button>
+  <button id="stop-btn" disabled>Stop recording</button>
+
+  <!-- List item to store the recording files so they can be played in the browser -->
+  <h2>Stored Recordings</h2>
+  <ul id="recordingslist"></ul>
+  <br>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
 <button onclick="execute()">execute</button>
-<audio id="player" controls></audio>
-<script>
-  var player = document.getElementById('player');
 
-  var handleSuccess = function(stream) {
-    if (window.URL) {
-      player.src = window.URL.createObjectURL(stream);
-	console.log("audio",player.src);
-    } else {
-      player.src = stream;
-    }
-  };
-
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-      .then(handleSuccess);
-</script>
 
 
 </body>
