@@ -5,53 +5,6 @@
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.js"></script>
 <script src="js/recorder.js"></script>
-<script>
-  //convert into base64 code
-
-
-  /**
-   * Sample JavaScript code for speech.speech.recognize
-   * See instructions for running APIs Explorer code samples locally:
-   * https://developers.google.com/explorer-help/guides/code_samples#javascript
-   */
-
-  function authenticate() {
-    return gapi.auth2.getAuthInstance()
-        .signIn({scope: "https://www.googleapis.com/auth/cloud-platform"})
-        .then(function() { console.log("Sign-in successful"); },
-              function(err) { console.error("Error signing in", err); });
-  }
-  function loadClient() {
-    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
-        .then(function() { console.log("GAPI client loaded for API"); },
-              function(err) { console.error("Error loading GAPI client for API", err); });
-  }
-  // Make sure the client is loaded and sign-in is complete before calling this method.
-  // Make sure the client is loaded and sign-in is complete before calling this method.
-  function execute() {
-    var base64FormatData=base64AudioFormat;
-    console.log("base 64 data for json",base64FormatData);
-    return gapi.client.speech.speech.longrunningrecognize({
-      "resource": {
-        "audio": {
-          "content": base64FormatData 
-        }
-        
-      }
-    })
-        .then(function(response) {
-                // Handle the results here (response.result has the parsed body).
-                console.log("Response", response);
-              },
-              function(err) { console.error("Execute error", err); });
-  }
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
-  });
-</script>
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
