@@ -125,7 +125,8 @@ window.onload = function(){
             
             var url = URL.createObjectURL(AudioBLOB);
             console.log("blob URL",url);
-            base64AudioFormat=convertToBase64(AudioBLOB);
+            convertToBase64(AudioBLOB);
+           
             var li = document.createElement('li');
             var au = document.createElement('audio');
             var hf = document.createElement('a');
@@ -153,6 +154,56 @@ function convertToBase64(blob){
     reader.onloadend = function() {
         base64data = reader.result;                
         console.log(base64data);
+        base64AudioFormat=base64data;
+        console.log("base 64 data",base64AudioFormat);
     }
     // 
 }
+function sendBase64Data(data){
+    return data;
+}
+
+
+//Google Api code
+
+/**
+   * Sample JavaScript code for speech.speech.recognize
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/guides/code_samples#javascript
+   */
+
+  function authenticate() {
+    return gapi.auth2.getAuthInstance()
+        .signIn({scope: "https://www.googleapis.com/auth/cloud-platform"})
+        .then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  function loadClient() {
+    return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
+        .then(function() { console.log("GAPI client loaded for API"); },
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  // Make sure the client is loaded and sign-in is complete before calling this method.
+  function execute() {
+    console.log("Window base64 value",base64AudioFormat);
+    return gapi.client.speech.speech.longrunningrecognize({
+      "resource": {
+        "audio": {
+          "content": base64AudioFormat 
+        }
+        
+      }
+    })
+        .then(function(response) {
+                // Handle the results here (response.result has the parsed body).
+                console.log("Response", response);
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client:auth2", function() {
+    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
+  });
+
+
+// End google api code
