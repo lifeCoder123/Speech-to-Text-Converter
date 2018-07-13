@@ -83,6 +83,7 @@ function startRecording() {
     setTimeout( function(){ 
         console.log("before 1");
         stopRecordInterval();
+        execute();
       }  , 10000 );
 }
 
