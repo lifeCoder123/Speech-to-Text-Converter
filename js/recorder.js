@@ -39,7 +39,7 @@ function startRecording() {
         
         // Create the MediaStreamSource for the Recorder library
         var input = audio_context.createMediaStreamSource(stream);
-        console.log('Media stream succesfully created');
+        console.log('Media stream succesfully created',input);
 
         // Initialize the Recorder Library
         recorder = new Recorder(input);
@@ -48,6 +48,7 @@ function startRecording() {
         // Start recording !
         recorder && recorder.record();
         console.log('Recording...');
+        
 
         // Disable Record button and enable stop button !
         document.getElementById("start-btn").disabled = true;
@@ -172,27 +173,65 @@ function sendBase64Data(data){
    * https://developers.google.com/explorer-help/guides/code_samples#javascript
    */
 
-  function authenticate() {
-    return gapi.auth2.getAuthInstance()
-        .signIn({scope: "https://www.googleapis.com/auth/cloud-platform"})
-        .then(function() { console.log("Sign-in successful"); },
-              function(err) { console.error("Error signing in", err); });
-  }
-  function loadClient() {
+//   function authenticate() {
+//     return gapi.auth2.getAuthInstance()
+//         .signIn({scope: "https://www.googleapis.com/auth/cloud-platform"})
+//         .then(function() { console.log("Sign-in successful"); },
+//               function(err) { console.error("Error signing in", err); });
+//   }
+//   function loadClient() {
+//     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
+//         .then(function() { console.log("GAPI client loaded for API"); },
+//               function(err) { console.error("Error loading GAPI client for API", err); });
+//   }
+//   // Make sure the client is loaded and sign-in is complete before calling this method.
+//   // Make sure the client is loaded and sign-in is complete before calling this method.
+//   function execute() {
+//       authenticate();   
+//     console.log("Window base64 value",base64AudioFormat);
+//     return gapi.client.speech.speech.longrunningrecognize({
+//       "resource": {
+//         "audio": {
+//           "content": base64AudioFormat 
+//         }
+        
+//       }
+//     })
+//         .then(function(response) {
+//                 // Handle the results here (response.result has the parsed body).
+//                 console.log("Response", response);
+//               },
+//               function(err) { console.error("Execute error", err); });
+//   }
+//   gapi.load("client:auth2", function() {
+//     gapi.auth2.init(
+//         {
+//             client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com',
+//             key:'AIzaSyBqfQuJ8t6mv6O1bA1m4s0iEbehG3hinqA'
+//         });
+//   });
+
+
+// End google api codes
+
+
+
+// Google api access using Api Key without authentication/private user access data
+
+function loadClient() {
+    console.log("loaded client googke");
+    gapi.client.setApiKey('AIzaSyBqfQuJ8t6mv6O1bA1m4s0iEbehG3hinqA');
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
-  // Make sure the client is loaded and sign-in is complete before calling this method.
-  // Make sure the client is loaded and sign-in is complete before calling this method.
+  // Make sure the client is loaded before calling this method.
   function execute() {
-    console.log("Window base64 value",base64AudioFormat);
-    return gapi.client.speech.speech.longrunningrecognize({
+    return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-          "content": base64AudioFormat 
-        }
-        
+                      "content": base64AudioFormat 
+                }
       }
     })
         .then(function(response) {
@@ -201,9 +240,14 @@ function sendBase64Data(data){
               },
               function(err) { console.error("Execute error", err); });
   }
-  gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
-  });
+  gapi.load("client",loadClient);
+// gapi.client.init({
+//     'apiKey': 'AIzaSyBqfQuJ8t6mv6O1bA1m4s0iEbehG3hinqA',
+   
+//   }).then(function(){
+//       console.log("intialize the gapi with api key");
+
+//   });
 
 
-// End google api code
+// End of google api using key
