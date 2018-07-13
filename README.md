@@ -13,7 +13,7 @@ Steps for running for intial testing after that we make them as per our convenie
 7.If it gives the 403 forbidden access then use Approprate client ID which enable billing account for keys.replace Client ID
 
 gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com'});
+    gapi.auth2.init({client_id: '713171281104-XXXXXXXXXXXX.apps.googleusercontent.com'});
   });
   
  Demo: https://wasimofficial123.github.io/google-speech/
