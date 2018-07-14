@@ -45,9 +45,33 @@ function startRecording() {
         recorder = new Recorder(input);
         console.log('Recorder initialised');
 
+
+        // //display interval 
+        
+        // var li = document.createElement('li');
+        // var au = document.createElement('audio');
+    
+
+        // au.controls = true;
+        // au.srcObject = stream;
+        // au.play();
+        //li.appendChild(au);
+        //audiosContainer.appendChild(li);
+        
+        // Important:
+        // Change the format of the file according to the mimetype
+        // e.g for audio/wav the extension is .wav 
+        //     for audio/mpeg (mp3) the extension is .mp3
+        
+        
+        
+        
+
         // Start recording !
         recorder && recorder.record();
         console.log('Recording...');
+        
+        
         
 
         // Disable Record button and enable stop button !
@@ -56,6 +80,49 @@ function startRecording() {
     }, function (e) {
         console.error('No live audio input: ' + e);
     });
+    setTimeout( function(){ 
+        console.log("before 1");
+        stopRecordInterval();
+        execute();
+      }  , 10000 );
+}
+
+function stopRecordInterval(){
+    //This function is used to stop recording after some time of interval
+    
+    var _AudioFormat = "audio/wav";
+    stopRecording(function(AudioBLOB){
+        // Note:
+        // Use the AudioBLOB for whatever you need, to download
+        // directly in the browser, to upload to the server, you name it !
+
+        // In this case we are going to add an Audio item to the list so you
+        // can play every stored Audio
+
+        
+        
+        var url = URL.createObjectURL(AudioBLOB);
+        console.log("blob URL",url);
+        convertToBase64(AudioBLOB);
+       
+        var li = document.createElement('li');
+        var au = document.createElement('audio');
+        var hf = document.createElement('a');
+
+        au.controls = true;
+        au.src = url;
+        hf.href = url;
+        // Important:
+        // Change the format of the file according to the mimetype
+        // e.g for audio/wav the extension is .wav 
+        //     for audio/mpeg (mp3) the extension is .mp3
+        hf.download = new Date().toISOString() + '.wav';
+        hf.innerHTML = hf.download;
+        li.appendChild(au);
+        li.appendChild(hf);
+        recordingslist.appendChild(li);
+    }, _AudioFormat);
+    console.log("after 1 sec");
 }
 
 /**
@@ -114,37 +181,37 @@ window.onload = function(){
         // You can use mp3 to using the correct mimetype
         //var AudioFormat = "audio/mpeg";
 
-        stopRecording(function(AudioBLOB){
-            // Note:
-            // Use the AudioBLOB for whatever you need, to download
-            // directly in the browser, to upload to the server, you name it !
+        // stopRecording(function(AudioBLOB){
+        //     // Note:
+        //     // Use the AudioBLOB for whatever you need, to download
+        //     // directly in the browser, to upload to the server, you name it !
 
-            // In this case we are going to add an Audio item to the list so you
-            // can play every stored Audio
+        //     // In this case we are going to add an Audio item to the list so you
+        //     // can play every stored Audio
 
             
             
-            var url = URL.createObjectURL(AudioBLOB);
-            console.log("blob URL",url);
-            convertToBase64(AudioBLOB);
+        //     var url = URL.createObjectURL(AudioBLOB);
+        //     console.log("blob URL",url);
+        //     convertToBase64(AudioBLOB);
            
-            var li = document.createElement('li');
-            var au = document.createElement('audio');
-            var hf = document.createElement('a');
+        //     var li = document.createElement('li');
+        //     var au = document.createElement('audio');
+        //     var hf = document.createElement('a');
 
-            au.controls = true;
-            au.src = url;
-            hf.href = url;
-            // Important:
-            // Change the format of the file according to the mimetype
-            // e.g for audio/wav the extension is .wav 
-            //     for audio/mpeg (mp3) the extension is .mp3
-            hf.download = new Date().toISOString() + '.wav';
-            hf.innerHTML = hf.download;
-            li.appendChild(au);
-            li.appendChild(hf);
-            recordingslist.appendChild(li);
-        }, _AudioFormat);
+        //     au.controls = true;
+        //     au.src = url;
+        //     hf.href = url;
+        //     // Important:
+        //     // Change the format of the file according to the mimetype
+        //     // e.g for audio/wav the extension is .wav 
+        //     //     for audio/mpeg (mp3) the extension is .mp3
+        //     hf.download = new Date().toISOString() + '.wav';
+        //     hf.innerHTML = hf.download;
+        //     li.appendChild(au);
+        //     li.appendChild(hf);
+        //     recordingslist.appendChild(li);
+        // }, _AudioFormat);
     }, false);
 };
 
