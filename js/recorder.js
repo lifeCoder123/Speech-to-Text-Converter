@@ -287,7 +287,7 @@ function sendBase64Data(data){
 
 function loadClient() {
     console.log("loaded client googke");
-    gapi.client.setApiKey('AIzaSyBAXXaJn0BTCbUn6IS0N7PjyoTPszGrj2k');
+    gapi.client.setApiKey('AIzaSyDCdr7QiWIu8bVrQ1D6Y984uZAbF_K0ipQ');
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
@@ -297,8 +297,8 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": base64AudioFormat 
-                        //"uri":"gs://speech-demo/shwazil_hoful.flac"
+                      //"content": base64AudioFormat 
+                        "uri":"gs://speech-demo/shwazil_hoful.flac"
                 }
       }
     })
