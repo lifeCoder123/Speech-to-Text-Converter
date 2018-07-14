@@ -273,8 +273,8 @@ function sendBase64Data(data){
 //   gapi.load("client:auth2", function() {
 //     gapi.auth2.init(
 //         {
-//             client_id: '713171281104-1dkjs4lci5qpobse7qfo9bdalccraera.apps.googleusercontent.com',
-//             key:'AIzaSyBqfQuJ8t6mv6O1bA1m4s0iEbehG3hinqA'
+//             client_id: 'YOUR CLIENT ID',
+//             key:'YOUR API KEY'
 //         });
 //   });
 
@@ -287,7 +287,7 @@ function sendBase64Data(data){
 
 function loadClient() {
     console.log("loaded client googke");
-    gapi.client.setApiKey('AIzaSyDCdr7QiWIu8bVrQ1D6Y984uZAbF_K0ipQ');
+    gapi.client.setApiKey('YOUR API KEY');
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
@@ -315,7 +315,7 @@ function loadClient() {
   }
   gapi.load("client",loadClient);
 // gapi.client.init({
-//     'apiKey': 'AIzaSyBqfQuJ8t6mv6O1bA1m4s0iEbehG3hinqA',
+//     'apiKey': 'YOUR_API_KEY',
    
 //   }).then(function(){
 //       console.log("intialize the gapi with api key");
