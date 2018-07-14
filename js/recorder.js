@@ -299,7 +299,12 @@ function loadClient() {
         "audio": {
                       "content": "SG93IGFyZSB5b3U="
                         //"uri":"gs://speech-demo/shwazil_hoful.flac"
-                }
+                },
+          "config": {
+                 "encoding": "LINEAR16",
+                 "languageCode": "en-US",
+                 "sampleRateHertz": 16000
+  }
       }
     })
         .then(function(response) {
