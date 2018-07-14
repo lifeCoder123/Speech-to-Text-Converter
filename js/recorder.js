@@ -297,7 +297,7 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": base64AudioFormat 
+                      "content": "SG93IGFyZSB5b3U="
                         //"uri":"gs://speech-demo/shwazil_hoful.flac"
                 }
       }
