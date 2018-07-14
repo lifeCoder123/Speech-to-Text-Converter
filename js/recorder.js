@@ -297,7 +297,7 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": "SG93IGFyZSB5b3U="
+                      "content": "SG93IGFyZSB5b3UuSSBhbSBmaW5l"
                         //"uri":"gs://speech-demo/shwazil_hoful.flac"
                 },
           "config": {
