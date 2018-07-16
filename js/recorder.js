@@ -301,7 +301,7 @@ function loadClient() {
       "resource": {
         "audio": {
                       //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                        "uri":"gs://gcs-test-data/gettysburg.flac"
+                        "uri":"gs://speech-demo/shwazil_hoful.flac"
                 },
           "config": {
                  "encoding": "LINEAR16",
