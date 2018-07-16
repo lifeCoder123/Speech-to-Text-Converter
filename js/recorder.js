@@ -304,9 +304,9 @@ function loadClient() {
                         "uri":"gs://speech-demo/shwazil_hoful.flac"
                 },
           "config": {
-                 "encoding": "FLACH",
-                 "languageCode": "en-US",
-                 "sampleRateHertz": 16000
+                //"encoding": "FLACH",
+                 //"languageCode": "en-US",
+                 //"sampleRateHertz": 16000
   }
       }
     })
