@@ -3,6 +3,7 @@ var audio_context;
 var recorder;
 var audio_stream;
 var base64AudioFormat;
+var url;
 
 /**
  * Patch the APIs for every browser that supports them and check
@@ -101,9 +102,10 @@ function stopRecordInterval(){
 
         
         
-        var url = URL.createObjectURL(AudioBLOB);
+        url = URL.createObjectURL(AudioBLOB);
+       
         console.log("blob URL",url);
-        convertToBase64(AudioBLOB);
+        convertToBase64(url);
        
         var li = document.createElement('li');
         var au = document.createElement('audio');
@@ -287,18 +289,19 @@ function sendBase64Data(data){
 
 function loadClient() {
     console.log("loaded client googke");
-    gapi.client.setApiKey('YOUR API KEY');
+    gapi.client.setApiKey('AIzaSyDCdr7QiWIu8bVrQ1D6Y984uZAbF_K0ipQ');
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded before calling this method.
   function execute() {
+      console.log("audio_url",url);
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": "SG93IGFyZSB5b3UuSSBhbSBmaW5l"
-                        //"uri":"gs://speech-demo/shwazil_hoful.flac"
+                      "content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
+                        // "uri":audio_url
                 },
           "config": {
                  "encoding": "LINEAR16",
