@@ -300,8 +300,8 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                        // "uri":audio_url
+                      //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
+                        "uri":"gs://gcs-test-data/gettysburg.flac"
                 },
           "config": {
                  "encoding": "LINEAR16",
