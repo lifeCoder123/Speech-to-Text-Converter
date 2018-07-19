@@ -281,12 +281,16 @@ function loadClient() {
       "resource": {
         "audio": {
                       //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
+<<<<<<< HEAD
                        "uri":url
+=======
+                        "uri":"gs://speech-demo/shwazil_hoful.flac"
+>>>>>>> 33ebbd5a7f0d40af9ec921b4646423edafb03d17
                 },
           "config": {
-                 "encoding": "LINEAR16",
-                 "languageCode": "en-US",
-                 "sampleRateHertz": 16000
+                //"encoding": "FLACH",
+                 //"languageCode": "en-US",
+                 //"sampleRateHertz": 16000
   }
       }
     })
