@@ -288,7 +288,7 @@ function loadClient() {
                 "enableAutomaticPunctuation": true,
                 "encoding": "LINEAR16",
                 "languageCode": "en-US",
-                "sampleRateHertz": 16000
+                "sampleRateHertz": 8000
               
   }
       }
