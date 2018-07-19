@@ -44,28 +44,8 @@ function startRecording() {
 
         // Initialize the Recorder Library
         recorder = new Recorder(input);
-        console.log('Recorder initialised');
-
-
-        // //display interval 
-        
-        // var li = document.createElement('li');
-        // var au = document.createElement('audio');
+        console.log('Recorder initialised',recorder);
     
-
-        // au.controls = true;
-        // au.srcObject = stream;
-        // au.play();
-        //li.appendChild(au);
-        //audiosContainer.appendChild(li);
-        
-        // Important:
-        // Change the format of the file according to the mimetype
-        // e.g for audio/wav the extension is .wav 
-        //     for audio/mpeg (mp3) the extension is .mp3
-        
-        
-        
         
 
         // Start recording !
@@ -105,7 +85,7 @@ function stopRecordInterval(){
         url = URL.createObjectURL(AudioBLOB);
        
         console.log("blob URL",url);
-        convertToBase64(url);
+        convertToBase64(AudioBLOB);
        
         var li = document.createElement('li');
         var au = document.createElement('audio');
@@ -300,8 +280,8 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                        // "uri":audio_url
+                      //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
+                       "uri":url
                 },
           "config": {
                  "encoding": "LINEAR16",
