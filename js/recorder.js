@@ -281,13 +281,14 @@ function loadClient() {
       "resource": {
         "audio": {
                       //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                       "uri":url+'.flac'
+                       "uri":url
 
                 },
           "config": {
-                "encoding": "FLAC",
-                 "languageCode": "en-US",
-                 "sampleRateHertz": 16000
+                "enableAutomaticPunctuation": true,
+                "encoding": "LINEAR16",
+                "languageCode": "en-US",
+                "model": "default"
   }
       }
     })
