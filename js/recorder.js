@@ -281,12 +281,12 @@ function loadClient() {
       "resource": {
         "audio": {
                       //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                       "uri":"https://github.com/lifeCoder123/google-speech/blob/master/audiofile.wav"
+                       "uri":"gs://cloud-samples-tests/speech/brooklyn.flac"
 
                 },
           "config": {
                 "enableAutomaticPunctuation": true,
-                "encoding": "LINEAR16",
+                "encoding": "FLAC",
                 "languageCode": "en-US",
                 "sampleRateHertz": 16000
               
