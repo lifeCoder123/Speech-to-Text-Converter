@@ -281,7 +281,7 @@ function loadClient() {
       "resource": {
         "audio": {
                       //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                       "uri":"https://github.com/lifeCoder123/google-speech/blob/master/brooklyn.flac"
+                       "uri":"https://storage.googleapis.com/cloud-samples-tests/speech/brooklyn.flac"
 
                 },
           "config": {
