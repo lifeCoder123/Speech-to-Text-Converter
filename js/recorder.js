@@ -285,9 +285,9 @@ function loadClient() {
 
                 },
           "config": {
-                //"encoding": "FLACH",
-                 //"languageCode": "en-US",
-                 //"sampleRateHertz": 16000
+                "encoding": "LINEAR16",
+                 "languageCode": "en-US",
+                 "sampleRateHertz": 16000
   }
       }
     })
