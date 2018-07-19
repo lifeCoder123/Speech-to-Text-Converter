@@ -281,11 +281,11 @@ function loadClient() {
       "resource": {
         "audio": {
                       //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                       "uri":url
+                       "uri":url+'.flac'
 
                 },
           "config": {
-                "encoding": "LINEAR16",
+                "encoding": "FLAC",
                  "languageCode": "en-US",
                  "sampleRateHertz": 16000
   }
