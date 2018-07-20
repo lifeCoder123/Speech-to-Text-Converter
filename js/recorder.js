@@ -280,13 +280,13 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                       "uri":"https://storage.googleapis.com/cloud-samples-tests/speech/brooklyn.flac"
+                      "content": base64AudioFormat
+                       //"uri":""
 
                 },
           "config": {
                 "enableAutomaticPunctuation": true,
-                "encoding": "FLAC",
+                "encoding": "LINEAR16",
                 "languageCode": "en-US",
                 "sampleRateHertz": 16000
               
