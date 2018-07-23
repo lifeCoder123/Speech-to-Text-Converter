@@ -43,7 +43,7 @@ function startRecording() {
         console.log('Media stream succesfully created',input);
 
         // Initialize the Recorder Library
-        recorder = new Recorder(input);
+        recorder = new Recorder(input,{numChannels:1}); //numchannel set to 1 default no of channel for recording is 2.
         console.log('Recorder initialised',recorder);
     
         
