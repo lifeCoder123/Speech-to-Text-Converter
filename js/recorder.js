@@ -202,7 +202,7 @@ function convertToBase64(blob){
     var reader = new FileReader();
     reader.readAsDataURL(blob); 
     reader.onloadend = function() {
-        base64data = reader.result;                
+        base64data = reader.result.split(',')[1];              
         console.log(base64data);
         base64AudioFormat=base64data;
         console.log("base 64 data",base64AudioFormat);
@@ -288,7 +288,7 @@ function loadClient() {
                 "enableAutomaticPunctuation": true,
                 "encoding": "LINEAR16",
                 "languageCode": "en-US",
-                "sampleRateHertz": 16000
+                "sampleRateHertz": 44100
               
   }
       }
