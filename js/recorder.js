@@ -297,7 +297,8 @@ function loadClient() {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
                 var parsedJSON = JSON.parse(response);
-                for(var data in parsedJSON){
+                console.log("parsed Json",parsedJSON.result);
+                for(var data in parsedJSON.result){
                     for(var obj in data.alternatives){
                         document.getElementById("note_area").innerHTML=obj;
                     }
