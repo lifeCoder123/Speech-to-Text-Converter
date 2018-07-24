@@ -281,8 +281,8 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": base64AudioFormat
-                       //"uri":""
+                      //"content": base64AudioFormat
+                       "uri":url
 
                 },
           "config": {
