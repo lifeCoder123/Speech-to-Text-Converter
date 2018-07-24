@@ -2,7 +2,7 @@
 var audio_context;
 var recorder;
 var audio_stream;
-let base64AudioFormat;
+var base64AudioFormat;
 var url;
 
 /**
@@ -64,12 +64,7 @@ function startRecording() {
     setTimeout( function(){ 
         console.log("before 1");
         stopRecordInterval();
-        //execute();
-        
-        
-        
-
-
+        execute();
       }  , 10000 );
 }
 
@@ -90,7 +85,7 @@ function stopRecordInterval(){
         url = URL.createObjectURL(AudioBLOB);
        
         console.log("blob URL",url);
-    //    convertToBase64(AudioBLOB); 
+        convertToBase64(AudioBLOB);
        
         var li = document.createElement('li');
         var au = document.createElement('audio');
@@ -140,8 +135,6 @@ function stopRecording(callback, AudioFormat) {
          * you provide the second argument of the function
          */
         recorder && recorder.exportWAV(function (blob) {
-            convertToBase64(blob);
-            //execute(formatted64Data);
             callback(blob);
 
             // create WAV download link using audio data blob
@@ -206,22 +199,71 @@ window.onload = function(){
 
 function convertToBase64(blob){
     // encode base64
-    var base64data;
     var reader = new FileReader();
     reader.readAsDataURL(blob); 
     reader.onloadend = function() {
         base64data = reader.result.split(',')[1];              
         console.log(base64data);
-        execute(base64data);
-        //base64AudioFormat=base64data;
-        //console.log("base 64 data",base64AudioFormat);
+        base64AudioFormat=base64data;
+        console.log("base 64 data",base64AudioFormat);
     }
-    
-    
+    // 
 }
-// function sendBase64Data(data){
-//     return data;
-// }
+function sendBase64Data(data){
+    return data;
+}
+
+
+//Google Api code
+
+/**
+   * Sample JavaScript code for speech.speech.recognize
+   * See instructions for running APIs Explorer code samples locally:
+   * https://developers.google.com/explorer-help/guides/code_samples#javascript
+   */
+
+//   function authenticate() {
+//     return gapi.auth2.getAuthInstance()
+//         .signIn({scope: "https://www.googleapis.com/auth/cloud-platform"})
+//         .then(function() { console.log("Sign-in successful"); },
+//               function(err) { console.error("Error signing in", err); });
+//   }
+//   function loadClient() {
+//     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/speech/v1/rest")
+//         .then(function() { console.log("GAPI client loaded for API"); },
+//               function(err) { console.error("Error loading GAPI client for API", err); });
+//   }
+//   // Make sure the client is loaded and sign-in is complete before calling this method.
+//   // Make sure the client is loaded and sign-in is complete before calling this method.
+//   function execute() {
+//       authenticate();   
+//     console.log("Window base64 value",base64AudioFormat);
+//     return gapi.client.speech.speech.longrunningrecognize({
+//       "resource": {
+//         "audio": {
+//           "content": base64AudioFormat 
+//         }
+        
+//       }
+//     })
+//         .then(function(response) {
+//                 // Handle the results here (response.result has the parsed body).
+//                 console.log("Response", response);
+//               },
+//               function(err) { console.error("Execute error", err); });
+//   }
+//   gapi.load("client:auth2", function() {
+//     gapi.auth2.init(
+//         {
+//             client_id: 'YOUR CLIENT ID',
+//             key:'YOUR API KEY'
+//         });
+//   });
+
+
+// End google api codes
+
+
 
 // Google api access using Api Key without authentication/private user access data
 
@@ -233,12 +275,12 @@ function loadClient() {
               function(err) { console.error("Error loading GAPI client for API", err); });
   }
   // Make sure the client is loaded before calling this method.
-  function execute(basedata) {
-      console.log("Base data for execute",basedata);
+  function execute() {
+      console.log("audio_url",url);
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      "content": basedata
+                      "content": base64AudioFormat
                        //"uri":""
 
                 },
@@ -254,7 +296,6 @@ function loadClient() {
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
-                document.getElementById("note_area").innerHTML=response.result
               },
               function(err) { console.error("Execute error", err); });
   }
