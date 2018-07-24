@@ -44,7 +44,7 @@ function startRecording() {
         console.log('Media stream succesfully created',input);
 
         // Initialize the Recorder Library
-        recorder = new Recorder(input);
+        recorder = new Recorder(input,{numChannels:1}); //numchannel set to 1 default no of channel for recording is 2.
         console.log('Recorder initialised',recorder);
     
         
@@ -203,7 +203,7 @@ function convertToBase64(blob){
     var reader = new FileReader();
     reader.readAsDataURL(blob); 
     reader.onloadend = function() {
-        base64data = reader.result;                
+        base64data = reader.result.split(',')[1];              
         console.log(base64data);
         base64AudioFormat=base64data;
         console.log("base 64 data",base64AudioFormat);
@@ -281,15 +281,15 @@ function loadClient() {
     return gapi.client.speech.speech.recognize({
       "resource": {
         "audio": {
-                      //"content": "VGhpcyBpcyBhbiBhd2Vzb21lIHNjcmlwdA=="
-                       "uri":"https://storage.googleapis.com/cloud-samples-tests/speech/brooklyn.flac"
+                      "content": base64AudioFormat
+                       //"uri":""
 
                 },
           "config": {
                 "enableAutomaticPunctuation": true,
-                "encoding": "FLAC",
+                "encoding": "LINEAR16",
                 "languageCode": "en-US",
-                "sampleRateHertz": 16000
+                "sampleRateHertz": 44100
               
   }
       }
@@ -297,9 +297,9 @@ function loadClient() {
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
-                
                 //responseData.result.results[0].alternatives[0].transcript
-                document.getElementById("note_area").innerHTML=response.result.results[0].alternatives[0].transcript + " ";
+                document.getElementById("note_area").innerHTML=response.result.results[0].alternatives[0].transcript + " "
+              
               },
               function(err) { console.error("Execute error", err); });
   }
