@@ -163,38 +163,6 @@ window.onload = function(){
         var _AudioFormat = "audio/wav";
         // You can use mp3 to using the correct mimetype
         //var AudioFormat = "audio/mpeg";
-
-        // stopRecording(function(AudioBLOB){
-        //     // Note:
-        //     // Use the AudioBLOB for whatever you need, to download
-        //     // directly in the browser, to upload to the server, you name it !
-
-        //     // In this case we are going to add an Audio item to the list so you
-        //     // can play every stored Audio
-
-            
-            
-        //     var url = URL.createObjectURL(AudioBLOB);
-        //     console.log("blob URL",url);
-        //     convertToBase64(AudioBLOB);
-           
-        //     var li = document.createElement('li');
-        //     var au = document.createElement('audio');
-        //     var hf = document.createElement('a');
-
-        //     au.controls = true;
-        //     au.src = url;
-        //     hf.href = url;
-        //     // Important:
-        //     // Change the format of the file according to the mimetype
-        //     // e.g for audio/wav the extension is .wav 
-        //     //     for audio/mpeg (mp3) the extension is .mp3
-        //     hf.download = new Date().toISOString() + '.wav';
-        //     hf.innerHTML = hf.download;
-        //     li.appendChild(au);
-        //     li.appendChild(hf);
-        //     recordingslist.appendChild(li);
-        // }, _AudioFormat);
     }, false);
 };
 
@@ -210,10 +178,6 @@ function convertToBase64(blob){
     }
     // 
 }
-function sendBase64Data(data){
-    return data;
-}
-
 
 //Google Api code
 
