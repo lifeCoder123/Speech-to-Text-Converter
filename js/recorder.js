@@ -296,7 +296,12 @@ function loadClient() {
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
-                document.getElementById("note_area").innerHTML=response;
+                var parsedJSON = JSON.parse(response);
+                for(var data in parsedJSON){
+                    for(var obj in data.alternatives){
+                        document.getElementById("note_area").innerHTML=obj;
+                    }
+                }
               },
               function(err) { console.error("Execute error", err); });
   }
