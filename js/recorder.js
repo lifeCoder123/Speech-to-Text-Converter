@@ -296,6 +296,7 @@ function loadClient() {
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
+                document.getElementById("note_area").innerHTML=response;
               },
               function(err) { console.error("Execute error", err); });
   }
