@@ -298,9 +298,10 @@ function loadClient() {
                 console.log("Response", response);
                 var parsedJSON = JSON.parse(response);
                 console.log("parsed Json",parsedJSON.result);
-                for(var data in parsedJSON.result){
+                for(var data in parsedJSON.results){
                     for(var obj in data.alternatives){
-                        document.getElementById("note_area").innerHTML=obj;
+                        document.getElementById("note_area").innerHTML=obj.transcript
+                        ;
                     }
                 }
               },
