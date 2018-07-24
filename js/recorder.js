@@ -5,6 +5,7 @@ var audio_stream;
 var base64AudioFormat;
 var url;
 
+
 /**
  * Patch the APIs for every browser that supports them and check
  * if getUserMedia is supported on the browser. 
@@ -296,7 +297,9 @@ function loadClient() {
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
-               console.log("response result",response.results)
+                
+                //responseData.result.results[0].alternatives[0].transcript
+                document.getElementById("note_area").innerHTML=response.result.results[0].alternatives[0].transcript + " ";
               },
               function(err) { console.error("Execute error", err); });
   }
