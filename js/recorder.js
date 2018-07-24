@@ -4,7 +4,7 @@ var recorder;
 var audio_stream;
 var base64AudioFormat;
 var url;
-var responseData;
+
 
 /**
  * Patch the APIs for every browser that supports them and check
@@ -297,7 +297,7 @@ function loadClient() {
         .then(function(response) {
                 // Handle the results here (response.result has the parsed body).
                 console.log("Response", response);
-               responseData=response;
+              
               },
               function(err) { console.error("Execute error", err); });
   }
